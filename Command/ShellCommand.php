@@ -17,7 +17,23 @@ class ShellCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $execPath = $this->findPhpshExecutable();
         $shellStartupPath = realpath(__DIR__ . "/../ShellStartup.php");
-        pcntl_exec("/usr/local/bin/phpsh", [$shellStartupPath]);
+        pcntl_exec($execPath, [$shellStartupPath]);
+    }
+
+    private function findPhpshExecutable()
+    {
+        $output = shell_exec("which phpsh");
+        if ($output === FALSE) {
+            throw new \Exception("Unable to run 'which' to locate phpsh");
+        } else {
+            $output = trim($output);
+            if ($output == '') {
+                throw new \Exception("Unable to locate phpsh in your PATH");
+            } else {
+                return explode("\n", $output)[0];
+            }
+        }
     }
 }
