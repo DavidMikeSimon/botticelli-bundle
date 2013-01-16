@@ -17,6 +17,7 @@ class ShellCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        print("FOO");
+        $shellStartupPath = realpath(__DIR__ . "/../ShellStartup.php");
+        pcntl_exec("/usr/local/bin/phpsh", [$shellStartupPath]);
     }
 }

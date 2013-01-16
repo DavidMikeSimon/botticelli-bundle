@@ -1,5 +1,6 @@
 {
     "name": "davidmikesimon/botticelli-bundle",
+    "version": "0.1.0",
     "description": "Adds an interactive PHP shell to Symfony2",
     "keywords": ["shell", "console", "interactive", "irb", "botticelli"],
     "type": "symfony-bundle",
