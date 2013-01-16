@@ -9,6 +9,7 @@ unset($basedir);
 $kernel = new AppKernel('dev', false);
 $kernel->boot();
 $container = $kernel->getContainer();
+unset($kernel);
 
 print("Welcome to Botticelli PHP Shell\n");
 print("You can access services via \$container\n");
